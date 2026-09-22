@@ -1,5 +1,5 @@
 import { DynamicModule, Module } from '@nestjs/common';
-import { RulesEngine, RulesEngineOptions } from '@sentinel/rules-core';
+import { RulesEngine, RulesEngineOptions } from '@sentinel-aml/rules-core';
 
 export interface SentinelRulesAsyncOptions {
   imports?: DynamicModule['imports'];

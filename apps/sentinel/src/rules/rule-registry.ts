@@ -1,6 +1,6 @@
 import { Injectable, Logger, OnModuleDestroy, OnModuleInit } from '@nestjs/common';
 import { InjectDataSource } from '@nestjs/typeorm';
-import { createRule, Rule, RuleSource } from '@sentinel/rules-core';
+import { createRule, Rule, RuleSource } from '@sentinel-aml/rules-core';
 import { DataSource } from 'typeorm';
 import { config } from '../config';
 import { RuleConfigEntity } from '../database/entities/rule-config.entity';

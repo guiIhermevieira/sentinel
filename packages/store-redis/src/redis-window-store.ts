@@ -1,5 +1,5 @@
 import type { Redis } from 'ioredis';
-import type { WindowEntry, WindowStore } from '@sentinel/rules-core';
+import type { WindowEntry, WindowStore } from '@sentinel-aml/rules-core';
 import { RECORD_SCRIPT } from './scripts';
 
 type RedisWithRecord = Redis & {

@@ -3,14 +3,21 @@
   "private": true,
   "description": "Transaction monitoring service and reusable AML rules engine",
   "packageManager": "pnpm@9.15.9",
-  "engines": { "node": ">=22" },
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "build": "turbo run build",
     "test": "turbo run test",
     "typecheck": "turbo run typecheck",
-    "dev": "turbo run dev --filter=@sentinel/app"
+    "dev": "turbo run dev --filter=@sentinel-aml/app",
+    "changeset": "changeset",
+    "version-packages": "changeset version && pnpm install --lockfile-only",
+    "release": "node scripts/publish.mjs",
+    "release:dry-run": "pnpm build && node scripts/publish.mjs --dry-run"
   },
   "devDependencies": {
+    "@changesets/cli": "^2",
     "@types/node": "^22.10.0",
     "turbo": "^2.11.2",
     "typescript": "^5.9.3"

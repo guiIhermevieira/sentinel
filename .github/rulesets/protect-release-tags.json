@@ -1,0 +1,12 @@
+{
+  "name": "Protect release tags",
+  "target": "tag",
+  "enforcement": "active",
+  "conditions": {
+    "ref_name": { "include": ["refs/tags/@sentinel-aml/**"], "exclude": [] }
+  },
+  "rules": [
+    { "type": "deletion" },
+    { "type": "update" }
+  ]
+}

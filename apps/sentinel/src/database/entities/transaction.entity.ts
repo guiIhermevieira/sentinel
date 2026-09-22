@@ -1,5 +1,5 @@
 import { Column, CreateDateColumn, Entity, Index, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import type { TransactionType } from '@sentinel/rules-core';
+import type { TransactionType } from '@sentinel-aml/rules-core';
 import { bigintToNumber } from '../bigint.transformer';
 import { AlertEntity } from './alert.entity';
 

@@ -1,6 +1,6 @@
 import { Inject, Injectable, Logger, OnApplicationBootstrap } from '@nestjs/common';
 import { InjectDataSource } from '@nestjs/typeorm';
-import { RulesEngine } from '@sentinel/rules-core';
+import { RulesEngine } from '@sentinel-aml/rules-core';
 import Redis from 'ioredis';
 import { randomUUID } from 'node:crypto';
 import { DataSource } from 'typeorm';

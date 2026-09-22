@@ -1,8 +1,8 @@
 import { BullModule } from '@nestjs/bullmq';
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { SentinelRulesModule } from '@sentinel/nestjs';
-import { RedisWindowStore } from '@sentinel/store-redis';
+import { SentinelRulesModule } from '@sentinel-aml/nestjs';
+import { RedisWindowStore } from '@sentinel-aml/store-redis';
 import Redis from 'ioredis';
 import { AuthModule } from './auth/auth.module';
 import { config } from './config';
