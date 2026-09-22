@@ -1,8 +1,12 @@
 # Sentinel
 
+[![CI](https://github.com/guiIhermevieira/sentinel/actions/workflows/ci.yml/badge.svg)](https://github.com/guiIhermevieira/sentinel/actions/workflows/ci.yml)
+[![npm](https://img.shields.io/npm/v/@sentinel-aml/rules-core?label=%40sentinel-aml%2Frules-core)](https://www.npmjs.com/package/@sentinel-aml/rules-core)
+[![License: MPL-2.0 / AGPL-3.0](https://img.shields.io/badge/license-MPL--2.0%20%2F%20AGPL--3.0-blue)](#license)
+
 Transaction monitoring for AML compliance: a NestJS service plus a framework-agnostic rules engine you can use on its own.
 
-> 🚧 Work in progress. See the [milestones](#milestones) below.
+The backend is complete (milestones M0 to M3). The analyst dashboard (M4) is next.
 
 ## Architecture
 
@@ -27,11 +31,17 @@ Key decisions are documented as [Architecture Decision Records](docs/adr/).
 
 The rules engine is published to npm and can be used without the rest of Sentinel:
 
-| Package | npm |
+| Package | What it is |
 |---|---|
-| [`@sentinel-aml/rules-core`](packages/rules-core) | The engine, built-in AML rules and rule catalog. No runtime dependencies. |
-| [`@sentinel-aml/store-redis`](packages/store-redis) | Redis-backed rolling windows. |
-| [`@sentinel-aml/nestjs`](packages/nestjs) | NestJS module. |
+| [`@sentinel-aml/rules-core`](https://www.npmjs.com/package/@sentinel-aml/rules-core) | The engine, built-in AML rules and rule catalog. No runtime dependencies. |
+| [`@sentinel-aml/store-redis`](https://www.npmjs.com/package/@sentinel-aml/store-redis) | Redis-backed rolling windows. |
+| [`@sentinel-aml/nestjs`](https://www.npmjs.com/package/@sentinel-aml/nestjs) | NestJS module. |
+
+```bash
+npm install @sentinel-aml/rules-core
+```
+
+Each package's README has a quick start: [rules-core](packages/rules-core), [store-redis](packages/store-redis), [nestjs](packages/nestjs).
 
 Releases are versioned with Changesets and published from CI with npm trusted publishing and provenance. See [RELEASING.md](RELEASING.md).
 
