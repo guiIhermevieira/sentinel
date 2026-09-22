@@ -23,6 +23,18 @@ flowchart LR
 
 Key decisions are documented as [Architecture Decision Records](docs/adr/).
 
+## Packages
+
+The rules engine is published to npm and can be used without the rest of Sentinel:
+
+| Package | npm |
+|---|---|
+| [`@sentinel-aml/rules-core`](packages/rules-core) | The engine, built-in AML rules and rule catalog. No runtime dependencies. |
+| [`@sentinel-aml/store-redis`](packages/store-redis) | Redis-backed rolling windows. |
+| [`@sentinel-aml/nestjs`](packages/nestjs) | NestJS module. |
+
+Releases are versioned with Changesets and published from CI with npm trusted publishing and provenance. See [RELEASING.md](RELEASING.md).
+
 ## Repository layout
 
 | Path | What it is |
@@ -41,16 +53,16 @@ pnpm install
 docker compose up -d     # PostgreSQL and Redis
 pnpm build
 pnpm test
-pnpm --filter @sentinel/app test:e2e   # end-to-end, against Postgres and Redis
-pnpm --filter @sentinel/app start
+pnpm --filter @sentinel-aml/app test:e2e   # end-to-end, against Postgres and Redis
+pnpm --filter @sentinel-aml/app start
 ```
 
 Every request except `GET /health` needs an API key. Create one per client; the key is printed once:
 
 ```bash
-pnpm --filter @sentinel/app api-key:create payments-service producer
-pnpm --filter @sentinel/app api-key:create ana analyst
-pnpm --filter @sentinel/app api-key:create compliance-lead admin
+pnpm --filter @sentinel-aml/app api-key:create payments-service producer
+pnpm --filter @sentinel-aml/app api-key:create ana analyst
+pnpm --filter @sentinel-aml/app api-key:create compliance-lead admin
 ```
 
 | Role | Can |

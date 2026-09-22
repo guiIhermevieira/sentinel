@@ -1,12 +1,35 @@
 {
-  "name": "@sentinel/store-redis",
+  "name": "@sentinel-aml/store-redis",
   "version": "0.1.0",
-  "description": "Redis-backed WindowStore for @sentinel/rules-core (sorted sets + Lua)",
+  "description": "Redis-backed WindowStore for @sentinel-aml/rules-core (sorted sets + Lua)",
   "license": "MPL-2.0",
+  "author": "Guilherme Vieira",
+  "homepage": "https://github.com/guiIhermevieira/sentinel/tree/main/packages/store-redis#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/guiIhermevieira/sentinel.git",
+    "directory": "packages/store-redis"
+  },
+  "bugs": {
+    "url": "https://github.com/guiIhermevieira/sentinel/issues"
+  },
+  "keywords": [
+    "aml",
+    "transaction-monitoring",
+    "redis",
+    "rolling-window",
+    "sliding-window"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "sideEffects": false,
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
     "dist",
+    "src",
+    "README.md",
     "LICENSE"
   ],
   "scripts": {
@@ -15,12 +38,15 @@
     "test": "echo \"integration tests run against Redis via docker compose (TODO)\""
   },
   "dependencies": {
-    "@sentinel/rules-core": "workspace:*"
+    "@sentinel-aml/rules-core": "workspace:^"
   },
   "peerDependencies": {
     "ioredis": "^5.0.0"
   },
   "devDependencies": {
     "ioredis": "^5.11.1"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

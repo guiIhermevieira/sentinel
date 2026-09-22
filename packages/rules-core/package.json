@@ -1,12 +1,36 @@
 {
-  "name": "@sentinel/rules-core",
+  "name": "@sentinel-aml/rules-core",
   "version": "0.1.0",
   "description": "Framework-agnostic AML rules engine with rolling-window state",
   "license": "MPL-2.0",
+  "author": "Guilherme Vieira",
+  "homepage": "https://github.com/guiIhermevieira/sentinel/tree/main/packages/rules-core#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/guiIhermevieira/sentinel.git",
+    "directory": "packages/rules-core"
+  },
+  "bugs": {
+    "url": "https://github.com/guiIhermevieira/sentinel/issues"
+  },
+  "keywords": [
+    "aml",
+    "anti-money-laundering",
+    "transaction-monitoring",
+    "rules-engine",
+    "fraud-detection",
+    "compliance"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "sideEffects": false,
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
     "dist",
+    "src",
+    "README.md",
     "LICENSE"
   ],
   "scripts": {
@@ -16,5 +40,8 @@
   },
   "devDependencies": {
     "vitest": "^3.2.7"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

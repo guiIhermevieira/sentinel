@@ -1,7 +1,7 @@
 import { Processor, WorkerHost } from '@nestjs/bullmq';
 import { Logger } from '@nestjs/common';
 import { InjectDataSource } from '@nestjs/typeorm';
-import { RulesEngine } from '@sentinel/rules-core';
+import { RulesEngine } from '@sentinel-aml/rules-core';
 import { Job } from 'bullmq';
 import { DataSource } from 'typeorm';
 import { insertAlerts } from '../cases/alerts';

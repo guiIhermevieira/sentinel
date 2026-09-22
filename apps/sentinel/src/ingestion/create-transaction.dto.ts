@@ -1,6 +1,6 @@
 import { Type } from 'class-transformer';
 import { IsDate, IsIn, IsInt, IsNotEmpty, IsOptional, IsPositive, IsString, Length, MaxLength } from 'class-validator';
-import type { TransactionType } from '@sentinel/rules-core';
+import type { TransactionType } from '@sentinel-aml/rules-core';
 
 export const TRANSACTION_TYPES: TransactionType[] = ['deposit', 'withdrawal', 'bet', 'payout', 'transfer'];
 

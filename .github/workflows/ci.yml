@@ -27,14 +27,19 @@ jobs:
           --health-interval 5s --health-retries 10
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v4
         with:
           node-version-file: .nvmrc
           cache: pnpm
       - run: pnpm install --frozen-lockfile
+      - name: Require a changeset for package changes
+        if: github.event_name == 'pull_request'
+        run: pnpm changeset status --since=origin/${{ github.base_ref }}
       - run: pnpm build
       - run: pnpm typecheck
       - run: pnpm test
       - name: End-to-end tests
-        run: pnpm --filter @sentinel/app test:e2e
+        run: pnpm --filter @sentinel-aml/app test:e2e

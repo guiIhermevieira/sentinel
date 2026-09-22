@@ -12,7 +12,7 @@ Sentinel has machine clients (producers submitting transactions) and people (ana
 
 ### API keys
 
-Every request carries `Authorization: Bearer <key>`. Keys look like `snt_` followed by 32 random bytes (base64url). Only a **SHA-256 hash** is stored, plus the first 12 characters so a key can be identified in listings, so a database leak does not expose working keys. The full key is shown once, at creation, by the CLI (`pnpm --filter @sentinel/app api-key:create <name> <role>`).
+Every request carries `Authorization: Bearer <key>`. Keys look like `snt_` followed by 32 random bytes (base64url). Only a **SHA-256 hash** is stored, plus the first 12 characters so a key can be identified in listings, so a database leak does not expose working keys. The full key is shown once, at creation, by the CLI (`pnpm --filter @sentinel-aml/app api-key:create <name> <role>`).
 
 SHA-256 without a salt is appropriate here, unlike for passwords: the keys are 256-bit random values, so brute force and precomputed tables are not practical.
 

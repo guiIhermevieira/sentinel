@@ -1,6 +1,6 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { InjectDataSource } from '@nestjs/typeorm';
-import { RulesEngine } from '@sentinel/rules-core';
+import { RulesEngine } from '@sentinel-aml/rules-core';
 import { DataSource } from 'typeorm';
 import { appendAudit, SYSTEM_ACTOR } from '../audit/audit';
 import { insertAlerts } from '../cases/alerts';

@@ -1,4 +1,4 @@
-import { RuleHit } from '@sentinel/rules-core';
+import { RuleHit } from '@sentinel-aml/rules-core';
 import { EntityManager } from 'typeorm';
 import { AlertEntity } from '../database/entities/alert.entity';
 import { NewAlert } from './case-aggregator';

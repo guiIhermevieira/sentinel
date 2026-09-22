@@ -1,12 +1,34 @@
 {
-  "name": "@sentinel/nestjs",
+  "name": "@sentinel-aml/nestjs",
   "version": "0.1.0",
-  "description": "NestJS integration for @sentinel/rules-core",
+  "description": "NestJS integration for @sentinel-aml/rules-core",
   "license": "MPL-2.0",
+  "author": "Guilherme Vieira",
+  "homepage": "https://github.com/guiIhermevieira/sentinel/tree/main/packages/nestjs#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/guiIhermevieira/sentinel.git",
+    "directory": "packages/nestjs"
+  },
+  "bugs": {
+    "url": "https://github.com/guiIhermevieira/sentinel/issues"
+  },
+  "keywords": [
+    "aml",
+    "transaction-monitoring",
+    "nestjs",
+    "nest"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "sideEffects": false,
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
     "dist",
+    "src",
+    "README.md",
     "LICENSE"
   ],
   "scripts": {
@@ -15,7 +37,7 @@
     "test": "echo \"no tests yet\""
   },
   "dependencies": {
-    "@sentinel/rules-core": "workspace:*"
+    "@sentinel-aml/rules-core": "workspace:^"
   },
   "peerDependencies": {
     "@nestjs/common": "^11.0.0"
@@ -24,5 +46,8 @@
     "@nestjs/common": "^11.1.0",
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.1"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

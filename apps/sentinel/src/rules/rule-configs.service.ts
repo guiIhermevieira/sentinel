@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectDataSource } from '@nestjs/typeorm';
-import { RULE_CATALOG, validateRuleConfig } from '@sentinel/rules-core';
+import { RULE_CATALOG, validateRuleConfig } from '@sentinel-aml/rules-core';
 import { GraphQLError } from 'graphql';
 import { DataSource } from 'typeorm';
 import { Actor, appendAudit } from '../audit/audit';
