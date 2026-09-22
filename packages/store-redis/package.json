@@ -1,0 +1,26 @@
+{
+  "name": "@sentinel/store-redis",
+  "version": "0.1.0",
+  "description": "Redis-backed WindowStore for @sentinel/rules-core (sorted sets + Lua)",
+  "license": "MPL-2.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "test": "echo \"integration tests run against Redis via docker compose (TODO)\""
+  },
+  "dependencies": {
+    "@sentinel/rules-core": "workspace:*"
+  },
+  "peerDependencies": {
+    "ioredis": "^5.0.0"
+  },
+  "devDependencies": {
+    "ioredis": "^5.11.1"
+  }
+}

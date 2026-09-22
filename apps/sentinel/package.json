@@ -1,0 +1,50 @@
+{
+  "name": "@sentinel/app",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Sentinel transaction-monitoring service",
+  "license": "AGPL-3.0-or-later",
+  "main": "dist/main.js",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "dev": "tsc -p tsconfig.json && node dist/main.js",
+    "start": "node dist/main.js",
+    "test": "echo \"unit tests live in packages; run test:e2e for the service\"",
+    "test:e2e": "tsc -p tsconfig.json && vitest run --config vitest.e2e.config.ts",
+    "api-key:create": "node dist/cli/create-api-key.js"
+  },
+  "dependencies": {
+    "@apollo/server": "^5.5.1",
+    "@as-integrations/express5": "^1.1.2",
+    "@nestjs/apollo": "^13.4.5",
+    "@nestjs/bullmq": "^11.0.5",
+    "@nestjs/common": "^11.1.0",
+    "@nestjs/core": "^11.1.0",
+    "@nestjs/graphql": "^13.4.5",
+    "@nestjs/platform-express": "^11.1.0",
+    "@nestjs/typeorm": "^11.0.3",
+    "@sentinel/nestjs": "workspace:*",
+    "@sentinel/rules-core": "workspace:*",
+    "@sentinel/store-redis": "workspace:*",
+    "bullmq": "^5.81.5",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.15.1",
+    "dataloader": "^2.2.3",
+    "graphql": "^16.14.2",
+    "graphql-depth-limit": "^1.1.0",
+    "graphql-type-json": "^0.3.2",
+    "ioredis": "^5.11.1",
+    "pg": "^8.23.0",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.1",
+    "typeorm": "^0.3.31"
+  },
+  "devDependencies": {
+    "@types/express": "^5",
+    "@types/graphql-depth-limit": "^1.1.6",
+    "@types/supertest": "^7.2.1",
+    "supertest": "^7.2.2",
+    "vitest": "^3.2.7"
+  }
+}

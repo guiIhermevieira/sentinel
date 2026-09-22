@@ -1,0 +1,127 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Alert {
+  caseId: ID
+  createdAt: DateTime!
+  id: ID!
+
+  """
+  Raised while rolling windows were incomplete. Cleared once re-checked with full history.
+  """
+  partialContext: Boolean!
+  reason: String!
+  ruleId: String!
+  score: Int!
+  transaction: Transaction!
+  transactionId: ID!
+}
+
+type AuditEvent {
+  action: String!
+  actorName: String!
+  actorType: String!
+  changes: JSON
+  entityId: String!
+  entityType: String!
+  id: ID!
+  metadata: JSON
+  occurredAt: DateTime!
+}
+
+type Case {
+  alertCount: Int!
+  alerts: [Alert!]!
+
+  """Every recorded action on this case, oldest first."""
+  auditTrail: [AuditEvent!]!
+  closedAt: DateTime
+  createdAt: DateTime!
+  customerId: String!
+  id: ID!
+  lastAlertAt: DateTime
+  resolutionNote: String
+  riskScore: Int!
+  status: CaseStatus!
+  updatedAt: DateTime!
+}
+
+"""open → in_review → escalated | dismissed"""
+enum CaseStatus {
+  dismissed
+  escalated
+  in_review
+  open
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+"""
+The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
+scalar JSON
+
+type Mutation {
+  dismissCase(id: ID!, note: String!): Case!
+  escalateCase(id: ID!, note: String): Case!
+  startReview(id: ID!): Case!
+  updateRuleConfig(input: UpdateRuleConfigInput!): RuleConfig!
+}
+
+type Query {
+  """Most recent first."""
+  auditEvents(entityId: String, entityType: String, limit: Int! = 50): [AuditEvent!]!
+  case(id: ID!): Case
+
+  """Cases ordered by risk, highest first."""
+  cases(customerId: String, limit: Int! = 20, offset: Int! = 0, status: CaseStatus): [Case!]!
+  ruleConfigs: [RuleConfig!]!
+  transaction(id: ID!): Transaction
+}
+
+type RuleConfig {
+  config: JSON!
+  enabled: Boolean!
+  ruleId: String!
+  updatedAt: DateTime!
+  updatedBy: String!
+  version: Int!
+}
+
+type Transaction {
+  accountCreatedAt: DateTime
+  alerts: [Alert!]!
+
+  """Minor units (e.g. cents). Float because GraphQL Int is 32-bit."""
+  amount: Float!
+  currency: String!
+  customerId: String!
+  evaluatedAt: DateTime
+  externalId: String!
+  id: ID!
+
+  """
+  Evaluated while rolling windows were being rebuilt; stateful rules will re-run.
+  """
+  needsRecheck: Boolean!
+  occurredAt: DateTime!
+  receivedAt: DateTime!
+  riskScore: Int
+  status: String!
+  type: String!
+}
+
+input UpdateRuleConfigInput {
+  config: JSON
+  enabled: Boolean
+
+  """
+  The version being edited. Stale versions are rejected with VERSION_CONFLICT.
+  """
+  expectedVersion: Int!
+  ruleId: String!
+}

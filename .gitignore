@@ -1,0 +1,8 @@
+node_modules
+dist
+.turbo
+coverage
+.env
+
+# Local AI assistant context
+CLAUDE.md

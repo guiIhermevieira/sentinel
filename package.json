@@ -1,0 +1,18 @@
+{
+  "name": "sentinel",
+  "private": true,
+  "description": "Transaction monitoring service and reusable AML rules engine",
+  "packageManager": "pnpm@9.15.9",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "build": "turbo run build",
+    "test": "turbo run test",
+    "typecheck": "turbo run typecheck",
+    "dev": "turbo run dev --filter=@sentinel/app"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "turbo": "^2.11.2",
+    "typescript": "^5.9.3"
+  }
+}
