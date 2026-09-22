@@ -1,12 +1,12 @@
 # Sentinel
 
 [![CI](https://github.com/guiIhermevieira/sentinel/actions/workflows/ci.yml/badge.svg)](https://github.com/guiIhermevieira/sentinel/actions/workflows/ci.yml)
-[![npm](https://img.shields.io/npm/v/@sentinel-aml/rules-core?label=%40sentinel-aml%2Frules-core)](https://www.npmjs.com/package/@sentinel-aml/rules-core)
+[![npm](https://img.shields.io/badge/npm-%40sentinel--aml-cb3837?logo=npm)](https://www.npmjs.com/org/sentinel-aml)
 [![License: MPL-2.0 / AGPL-3.0](https://img.shields.io/badge/license-MPL--2.0%20%2F%20AGPL--3.0-blue)](#license)
 
 Transaction monitoring for AML compliance: a NestJS service plus a framework-agnostic rules engine you can use on its own.
 
-The backend is complete (milestones M0 to M3). The analyst dashboard (M4) is next.
+**[Try it in the developer console](https://guiihermevieira.github.io/sentinel/)**: walk through each laundering pattern and experiment with the real rules engine, live in your browser.
 
 ## Architecture
 
@@ -31,11 +31,11 @@ Key decisions are documented as [Architecture Decision Records](docs/adr/).
 
 The rules engine is published to npm and can be used without the rest of Sentinel:
 
-| Package | What it is |
-|---|---|
-| [`@sentinel-aml/rules-core`](https://www.npmjs.com/package/@sentinel-aml/rules-core) | The engine, built-in AML rules and rule catalog. No runtime dependencies. |
-| [`@sentinel-aml/store-redis`](https://www.npmjs.com/package/@sentinel-aml/store-redis) | Redis-backed rolling windows. |
-| [`@sentinel-aml/nestjs`](https://www.npmjs.com/package/@sentinel-aml/nestjs) | NestJS module. |
+| Package | Version | What it is |
+|---|---|---|
+| [`@sentinel-aml/rules-core`](https://www.npmjs.com/package/@sentinel-aml/rules-core) | [![npm](https://img.shields.io/npm/v/@sentinel-aml/rules-core?label=)](https://www.npmjs.com/package/@sentinel-aml/rules-core) | The engine, built-in AML rules and rule catalog. No runtime dependencies. |
+| [`@sentinel-aml/store-redis`](https://www.npmjs.com/package/@sentinel-aml/store-redis) | [![npm](https://img.shields.io/npm/v/@sentinel-aml/store-redis?label=)](https://www.npmjs.com/package/@sentinel-aml/store-redis) | Redis-backed rolling windows. |
+| [`@sentinel-aml/nestjs`](https://www.npmjs.com/package/@sentinel-aml/nestjs) | [![npm](https://img.shields.io/npm/v/@sentinel-aml/nestjs?label=)](https://www.npmjs.com/package/@sentinel-aml/nestjs) | NestJS module. |
 
 ```bash
 npm install @sentinel-aml/rules-core
@@ -53,6 +53,7 @@ Releases are versioned with Changesets and published from CI with npm trusted pu
 | `packages/store-redis` | `WindowStore` backed by Redis sorted sets and an atomic Lua script. |
 | `packages/nestjs` | Thin NestJS module that wires the engine into a Nest app. |
 | `apps/sentinel` | The service itself: ingestion, cases, GraphQL, audit. |
+| `apps/dashboard` | The developer console: use cases and a live playground running the rules engine in the browser. |
 
 ## Getting started
 
@@ -65,6 +66,12 @@ pnpm build
 pnpm test
 pnpm --filter @sentinel-aml/app test:e2e   # end-to-end, against Postgres and Redis
 pnpm --filter @sentinel-aml/app start
+```
+
+To work on the developer console:
+
+```bash
+pnpm --filter @sentinel-aml/dashboard dev   # http://localhost:5173
 ```
 
 Every request except `GET /health` needs an API key. Create one per client; the key is printed once:
@@ -179,7 +186,8 @@ Every sensitive action is written to an append-only audit log in the same transa
 - [x] **M1:** Ingestion API with idempotency keys, BullMQ queue, evaluation worker, alerts
 - [x] **M2:** Structuring, rapid in-and-out and new-account rules; case aggregation; GraphQL API for analysts
 - [x] **M3:** API key authentication and roles, append-only audit log, rule thresholds in the database, Redis warm-up and re-check jobs, stale-transaction sweeper, GraphQL depth limits
-- [ ] **M4:** Analyst dashboard (React)
+- [x] **M4:** Developer console with use cases and a live rules playground ([ADR-009](docs/adr/0009-browser-playground-runs-the-real-engine.md))
+- [ ] **M5:** Analyst dashboard for real cases, on the GraphQL API
 
 ## License
 

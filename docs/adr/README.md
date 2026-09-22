@@ -10,3 +10,4 @@
 | 006 | [Framework-agnostic rules engine in a monorepo](0006-framework-agnostic-rules-engine-in-a-monorepo.md) | Accepted |
 | 007 | [One active case per customer, maintained under concurrency](0007-one-active-case-per-customer.md) | Accepted |
 | 008 | [API key authentication and roles](0008-api-key-authentication-and-roles.md) | Accepted |
+| 009 | [The developer console's playground runs the real engine in the browser](0009-browser-playground-runs-the-real-engine.md) | Accepted |

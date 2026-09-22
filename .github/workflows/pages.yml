@@ -1,0 +1,42 @@
+name: Developer console
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - apps/dashboard/**
+      - packages/rules-core/**
+      - .github/workflows/pages.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm --filter @sentinel-aml/dashboard test
+      - run: pnpm --filter @sentinel-aml/dashboard build
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: apps/dashboard/dist
+      - id: deployment
+        uses: actions/deploy-pages@v4

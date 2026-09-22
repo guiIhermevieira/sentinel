@@ -3,10 +3,20 @@
   "target": "tag",
   "enforcement": "active",
   "conditions": {
-    "ref_name": { "include": ["refs/tags/@sentinel-aml/**"], "exclude": [] }
+    "ref_name": {
+      "include": [
+        "refs/tags/@sentinel-aml/**",
+        "refs/tags/v*"
+      ],
+      "exclude": []
+    }
   },
   "rules": [
-    { "type": "deletion" },
-    { "type": "update" }
+    {
+      "type": "deletion"
+    },
+    {
+      "type": "update"
+    }
   ]
 }
